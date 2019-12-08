@@ -42,7 +42,18 @@ return [
     */
 
     'disks' => [
-
+        'userPhoto' => [
+            'driver' => 'local',
+            'root' => public_path('/photos/usersPhotos'),
+        ],
+        'adminPhoto' => [
+            'driver' => 'local',
+            'root' => public_path('/photos/adminsPhotos'),
+        ],
+        'articlePhoto' => [
+            'driver' => 'local',
+            'root' => public_path('/photos/articlesPhotos'),
+        ],
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
