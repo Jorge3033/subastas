@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +14,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/adminTemplate', function () {
-    return view('layouts.adminTemplate');
-});
+///// 				Page Controller
+#################################################################################33
+
+Route::get('/contact', 'PageController@contact')->name('contact');	
+Route::get('/categories', 'PageController@categories')->name('categories');	
+
+###################################################################################
+//					End Page Controlle
+
+
+// Admin Templates Routes
+###################################
+Route::get('/adminTemplate', 'AdminTemplateController@index')->name('adminTemplate');	
+##################################
+// End Admin Templates route
+
+//				Sessions Routes 
+###################################################################
+
+Route::get('/login', 'SessionsController@login')->name('login');	
+Route::POST('/checkLogin', 'SessionsController@checkLogin')->name('checkLogin');
+Route::get('/logOutAdmin', 'SessionsController@logOutAdmin')->name('logOutAdmin');	
+
+
+###################################################################
+// 				end Session Routes
+
+
+//							admin Routes
 
 ###################################################################
 #							Users Routes                          #
@@ -156,3 +181,5 @@ Route::get('/unlockPresale/{PresaleId}', 'PresaleController@unlock')->name('unlo
 ###################################################################
 #						End Presales Routes                #
 ###################################################################
+
+//		end adminRoutes

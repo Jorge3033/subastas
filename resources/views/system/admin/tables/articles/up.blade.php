@@ -7,7 +7,7 @@
 @section('form') 
 
 
-                    <h4 class="modal-title"><img src="{{ asset('Photos/articlesPhotos/box.jpg') }}" width="50" height="50"> Alta de Articulos</h4>
+                    <h4 class="modal-title"><img src="{{ asset('public/photos/articlesPhotos/box.jpg') }}" width="50" height="50"> Alta de Articulos</h4>
                   
                   <div class="modal-body">
                     {{ Form::open(['route'=>'upArticles','files'=>true]) }}

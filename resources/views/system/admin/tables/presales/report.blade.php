@@ -67,7 +67,7 @@
               <div class="modal-content">   
                 <!-- Modal Header -->
                   <div class="modal-header">
-                    <h4 class="modal-title"><img src="{{ asset('photos/folder.jfif') }}" width="50" height="50"> </h4>
+                    <h4 class="modal-title"><img src="{{ asset('public/photos/folder.jfif') }}" width="50" height="50"> </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                  <!-- Modal body -->

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\subCategory;  
 use App\Category;
-
+use Session;
 class SubCategoryController extends Controller
 {
     public function generateReport(){
@@ -31,7 +31,11 @@ class SubCategoryController extends Controller
 	}
 
 	public function report(){
-		 
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{ 
 		$report=$this->generateReport();
 		
 		$nextId=$this->lastId();
@@ -40,16 +44,23 @@ class SubCategoryController extends Controller
 			   ->with('report',$report) 
 			   ->with('nextId',$nextId); 
 		//return $report;
+		}	   
 	}
   
 	
 	public function formUpSubCategory(){
+
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$categories=$this->showCategories();
 		$nextId=$this->lastId();
 		return view('system.admin.tables.SubCategories.up')
 					->with('nextId',$nextId)
 					->with('categories',$categories);
-
+		}			
 	}
 
 
@@ -86,7 +97,11 @@ class SubCategoryController extends Controller
 	}
 
 	public function modificarsubCategory($SubCategoryId){
-		
+		 $s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $consulta =subCategory::where('id','=',$SubCategoryId)->get();
 		 $categories=$this->showCategories();
 		 //return $consulta;
@@ -94,7 +109,7 @@ class SubCategoryController extends Controller
 		 return view('system.admin.tables.subCategories.modificar')
 		 			->with('consulta',$consulta[0])
 		 			->with('categories',$categories);
-
+		 }			
 	}  
 
 	public function modificarSubCategories(Request $request){
@@ -128,17 +143,28 @@ class SubCategoryController extends Controller
 	  
 
 	public function lock($SubCategoryId){
-		
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $subCategory= subCategory::find($SubCategoryId);
 		 $subCategory->status="inactivo";
 		 $subCategory->save();
 		 return redirect('/reportSubCategories');
+		}
 	}
 
 	public function unlock($SubCategoryId){
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$subCategory= subCategory::find($SubCategoryId);
 		 $subCategory->status="activo";
 		 $subCategory->save();
 		 return redirect('/reportSubCategories');
+		}
 	}
 }

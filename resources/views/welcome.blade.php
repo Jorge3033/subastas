@@ -1,5 +1,5 @@
 @extends('layouts.homeTemplate')
-@section('secitonPage')
+@section('sectionPage')
     <main class="site-main">
     
     <!--================ Hero banner start =================-->
@@ -8,7 +8,7 @@
         <div class="row no-gutters align-items-center pt-60px">
           <div class="col-5 d-none d-sm-block">
             <div class="hero-banner__img">
-              <img class="img-fluid" src="img/home/hero-banner.png" alt="">
+              <img class="img-fluid" src="{{ asset('public/img/home/hero-banner.png') }}" alt="">
             </div>
           </div>
           <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">

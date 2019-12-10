@@ -7,7 +7,7 @@
 @section('form')
 
 
-                    <h4 class="modal-title"><img src="{{ asset('usersPhotos/noPhotoMan.png') }}" width="50" height="50"> Alta Usuario</h4>
+                    <h4 class="modal-title"><img src="{{ asset('public/photos/usersPhotos/noPhotoMan.png') }}" width="50" height="50"> Alta Usuario</h4>
                   
                   <div class="modal-body">
                     {{ Form::open(['route'=>'upUsers','files'=>true]) }}

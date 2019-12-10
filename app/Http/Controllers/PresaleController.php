@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\presale;
 use App\User;
 use App\article;
-
+use Session;
 class PresaleController extends Controller
 {
     public function generateReport(){
@@ -44,7 +44,11 @@ class PresaleController extends Controller
 	
 
 	public function report(){
-		 
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{ 
 		$report=$this->generateReport();
 		
 		$nextId=$this->lastId();
@@ -55,11 +59,16 @@ class PresaleController extends Controller
 			   ->with('seller',$seller) 
 			   ->with('nextId',$nextId);
 		//return $seller;
+		}	   
 	}
   
 	
 	public function formUpPresale(){
-		
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$nextId=$this->lastId();
 		$users=User::select('*')->get();
 		$articles=article::select('*')->get();
@@ -68,7 +77,7 @@ class PresaleController extends Controller
 					->with('nextId',$nextId)
 					->with('articles',$articles)
 					->with('users',$users); 
-
+		}
 	}
  
 
@@ -106,14 +115,18 @@ class PresaleController extends Controller
 	}
 
 	public function modificarPresale($PresaleId){
-		
+		 $s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $consulta =presale::where('id','=',$PresaleId)->get();
 		 
 		 //return $consulta;
                     
 		 return view('system.admin.tables.presales.modificar')
 		 			->with('consulta',$consulta[0]); 
-
+		 }
 	}   
 
 	public function modificarPresales(Request $request){
@@ -143,17 +156,28 @@ class PresaleController extends Controller
 	  
 
 	public function lock($PresaleId){
-		
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $presale= presale::find($PresaleId);
 		 $presale->status="rechazada"; 
 		 $presale->save();
 		 return redirect('/reportPresales');
+		}
 	}
 
 	public function unlock($PresaleId){
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$presale= presale::find($PresaleId);
 		 $presale->status="aceptada";
 		 $presale->save();
 		 return redirect('/reportPresales');
+		}
 	}
 }

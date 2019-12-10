@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\admin;
+use Session;
 class AdminController extends Controller
 {
+	
     public function generateReport(){
 		
 		$report= admin::all();
@@ -19,7 +21,11 @@ class AdminController extends Controller
 		return $nextId;
 	}
 	public function report(){
-		
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$report=$this->generateReport();
 		
 		$nextId=$this->lastId();
@@ -27,16 +33,20 @@ class AdminController extends Controller
 		return view('system.admin.tables.admins.report')
 			   ->with('report',$report) 
 			   ->with('nextId',$nextId); 
-		//return $report;
+		}	   
 	}
  
 	
 	public function formUpAdmin(){
-
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$nextId=$this->lastId();
 		return view('system.admin.tables.admins.up')
 					->with('nextId',$nextId);
-
+		}
 	}
 
 
@@ -66,10 +76,10 @@ class AdminController extends Controller
 	   		 
 	   }
 	    
-	   $nextId=$this->lastId();
+	   
 	   
 	   $admin= new admin;
-	   $admin->id=$nextId;
+	   $admin->id=null;
 	   $admin->password=$request->contrasena;
 	   $admin->name=$request->nombre;
 	   $admin->LastName=$request->apellidos;
@@ -92,12 +102,16 @@ class AdminController extends Controller
 	}
 
 	public function modificarAdmin($adminId){
-
+		 $s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $consulta =admin::where('id','=',$adminId)->get();
 		 //return $consulta;
                     
 		 return view('system.admin.tables.admins.modificarAdmin')->with('consulta',$consulta[0]);
-
+		}
 	}
 
 	public function modificarAdmins(Request $request){
@@ -123,10 +137,9 @@ class AdminController extends Controller
 	   		 
 	   }
 	    
-	   $nextId=$this->lastId();
+	   
 	   
 	   $admin= admin::find($request->id);
-	   $admin->id=$nextId;
 	   $admin->password=$request->contrasena;
 	   $admin->name=$request->nombre;
 	   $admin->LastName=$request->apellidos;
@@ -152,17 +165,29 @@ class AdminController extends Controller
 	  
 
 	public function lock($adminId){
-		 
+		 $s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $admin= admin::find($adminId);
 		 $admin->status="inactivo";
 		 $admin->save();
 		 return redirect('/reportAdmins');
+		}
 	}
 
 	public function unlock($adminId){
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$admin= admin::find($adminId);
 		 $admin->status="activo";
 		 $admin->save();
 		 return redirect('/reportAdmins');
+		}
 	}
+
 }

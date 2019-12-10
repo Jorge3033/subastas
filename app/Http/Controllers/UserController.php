@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\user;
+use Session;
 class UserController extends Controller
 {
     public function generateReport(){
@@ -19,7 +20,11 @@ class UserController extends Controller
 		return $nextId;
 	}
 	public function report(){
-		
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$report=$this->generateReport();
 		
 		$nextId=$this->lastId();
@@ -27,16 +32,21 @@ class UserController extends Controller
 		return view('system.admin.tables.users.report')
 			   ->with('report',$report) 
 			   ->with('nextId',$nextId); 
+		}	   
 	
 	}
 
 
 	public function formUpUser(){
-
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$nextId=$this->lastId();
 		return view('system.admin.tables.users.up')
 					->with('nextId',$nextId);
-
+		}
 	}
 
 
@@ -98,10 +108,14 @@ class UserController extends Controller
 	}
 
 	public function modificarUser($userId){
-
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $consulta =User::where('id','=',$userId)->get();
 		 return view('system.admin.tables.users.modificarUser')->with('consulta',$consulta[0]);
-
+		}
 	}
 
 	public function modificarUsers(Request $request){
@@ -160,17 +174,28 @@ class UserController extends Controller
 	  
 
 	public function lock($userId){
-		 
+		 $s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $user= User::find($userId);
 		 $user->status="inactivo";
 		 $user->save();
 		 return redirect('/reportUsers');
+		}
 	}
 
 	public function unlock($userId){
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$user= User::find($userId);
 		 $user->status="activo";
 		 $user->save();
 		 return redirect('/reportUsers');
+		}
 	}
 }

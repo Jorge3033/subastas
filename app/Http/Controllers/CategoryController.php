@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\category;
+use Session;
 class CategoryController extends Controller
 {
     public function generateReport(){
@@ -19,7 +20,11 @@ class CategoryController extends Controller
 		return $nextId;
 	}
 	public function report(){
-		 
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$report=$this->generateReport();
 		
 		$nextId=$this->lastId();
@@ -28,15 +33,20 @@ class CategoryController extends Controller
 			   ->with('report',$report) 
 			   ->with('nextId',$nextId); 
 		//return $report;
+		}	   
 	}
   
 	
 	public function formUpCategory(){
-
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$nextId=$this->lastId();
 		return view('system.admin.tables.categories.up')
 					->with('nextId',$nextId);
-
+		}			
 	}
 
 
@@ -74,12 +84,16 @@ class CategoryController extends Controller
 	}
 
 	public function modificarCategory($categoryId){
-
+		 $s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{	
 		 $consulta =category::where('id','=',$categoryId)->get();
 		 //return $consulta;
                     
 		 return view('system.admin.tables.categories.modificar')->with('consulta',$consulta[0]);
-
+		}	
 	} 
 
 	public function modificarCategories(Request $request){
@@ -115,17 +129,28 @@ class CategoryController extends Controller
 	  
 
 	public function lock($categoryId){
-		 
+		 $s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $category= category::find($categoryId);
 		 $category->status="inactivo";
 		 $category->save();
 		 return redirect('/reportCategories');
+		}
 	}
 
 	public function unlock($categoryId){
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$category= category::find($categoryId);
 		 $category->status="activo";
 		 $category->save();
 		 return redirect('/reportCategories');
+		}	
 	}
 }

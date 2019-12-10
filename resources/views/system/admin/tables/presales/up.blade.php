@@ -7,7 +7,7 @@
 @section('form')
 
 
-                    <h4 class="modal-title"><img src="{{ asset('Photos/folder.jfif') }}" width="50" height="50"> Alta Preventas</h4>
+                    <h4 class="modal-title"><img src="{{ asset('public/photos/folder.jfif') }}" width="50" height="50"> Alta Preventas</h4>
                   
                   <div class="modal-body">
                     {{ Form::open(['route'=>'upPresales']) }}

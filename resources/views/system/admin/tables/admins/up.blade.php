@@ -5,7 +5,7 @@
 @stop
 
 @section('form') 
-                    <h4 class="modal-title"><img src="{{ asset('photos/adminsPhotos/noPhotoMan.png') }}" width="50" height="50"> Alta Admin</h4>
+                    <h4 class="modal-title"><img src="{{ asset('public/photos/adminsPhotos/noPhotoMan.png') }}" width="50" height="50"> Alta Admin</h4>
                   
                   <div class="modal-body">
                     {{ Form::open(['route'=>'upAdmins','files'=>true]) }}

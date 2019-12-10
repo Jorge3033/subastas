@@ -29,7 +29,7 @@
 @section('records')
 	@foreach ($report as $r)
 		<tr>
-			<td><img src="{{ asset('photos/articlesPhotos/'.$r->photo) }}" width="50" height="50"></td>
+			<td><img src="{{ asset('public/photos/articlesPhotos/'.$r->photo) }}" width="50" height="50"></td>
       <td>{{ $r->name }}</td>
       <td>{{ $r->price }}</td>
       <td>{{ $r->subCategory }}</td>
@@ -66,7 +66,7 @@
                 <!-- Modal Header -->
                   <div class="modal-header">
                     <h4 class="modal-title">
-                      <img src="{{ asset('photos/articlesPhotos/'.$r->photo) }}" width="50" height="50"> 
+                      <img src="{{ asset('public/photos/articlesPhotos/'.$r->photo) }}" width="50" height="50"> 
                         {{ $r->name }}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
@@ -83,7 +83,7 @@
                     <div class="container">
                       <div class="form-group">
                         <label for="" class="form-control border-0 btn btn-info">Vendedor</label>
-                        <img src="{{ asset('photos/usersPhotos/'.$r->sellerPhoto) }}" alt="" width="50" height="50">
+                        <img src="{{ asset('public/photos/usersPhotos/'.$r->sellerPhoto) }}" alt="" width="50" height="50">
                         <label for="" class="ml-2"> {{ $r->sellerUser }}</label>
                         <br>
                         <label for="">Nombre: {{ $r->sellerName }}</label><br>

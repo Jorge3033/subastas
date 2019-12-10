@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="es"> 
 
 <head>
 
@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="img/logo/logo.png" rel="icon">
+  <link href="{{ asset('public/img/logo/logo.png')}}" rel="icon">
   <title>Admin Panel - @yield('title2')</title>
-  <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-  <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-  <link href="{{ asset('css/ruang-admin.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('public/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('public/css/ruang-admin.min.css')}}" rel="stylesheet">
   
   
 </head>
@@ -23,13 +23,13 @@
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminPanel">
         <div class="sidebar-brand-icon">
-          <img src="img/logo/logo2.png">
+          <img src="{{ asset('public/img/logo/logo2.png')}}">
         </div>
         <div class="sidebar-brand-text mx-3">GMR Company</div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/adminTemplate">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Graficas</span></a>
       </li>
@@ -199,7 +199,7 @@
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="img/man.png" style="max-width: 60px" alt="">
+                    <img class="rounded-circle" src="{{ asset('public/img/man.png')}}" style="max-width: 60px" alt="">
                     <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
@@ -210,7 +210,7 @@
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="img/girl.png" style="max-width: 60px" alt="">
+                    <img class="rounded-circle" src="{{ asset('public/img/girl.png')}}" style="max-width: 60px" alt="">
                     <div class="status-indicator bg-default"></div>
                   </div>
                   <div>
@@ -273,8 +273,12 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Admin Name</span>
+                <img class="img-profile rounded-circle" 
+                src="{{ asset('/public/photos/adminsPhotos/'.Session::get('sessionPhoto'))}}" 
+                style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-white small">
+                  {{ $sesion=Session::get('sessionName')}}
+                </span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -290,7 +294,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">
+                <a class="dropdown-item" href="/logOutAdmin">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -323,23 +327,22 @@
   <!-- Scroll to top -->
  
 
-  <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-  <script src="{{ asset('js/ruang-admin.min.js')}}"></script>
-  <script src="{{ asset('vendor/chart.js/Chart.min.js')}}"></script>
-  <script src="{{ asset('js/demo/chart-area-demo.js')}}"></script>  
+  <script src="{{ asset('public/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('public/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ asset('public/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+  <script src="{{ asset('public/js/ruang-admin.min.js')}}"></script>
+  <script src="{{ asset('public/vendor/chart.js/Chart.min.js')}}"></script>
+  <script src="{{ asset('public/js/demo/chart-area-demo.js')}}"></script>  
 
-  <!-- Page level plugins 
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
--->
+  <!-- Page level plugins--> 
+  <script src="{{ asset('public/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{ asset('public/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
   <!-- Page level custom scripts -->
-  <script>/*
+  <script>
     $(document).ready(function () {
-      $('#dataTable').DataTable(); // ID From dataTable 
       $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });*/
+    });
   </script>
 
 </body>

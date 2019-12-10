@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Home</title>
-  <link rel="icon" href="img/Fevicon.png" type="image/png">
-  <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+  <link rel="icon" href="{{ asset('public/img/Fevicon.png" type="image/png')}}">
+  <link rel="stylesheet" href="{{ asset('public/vendors/bootstrap/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('public/vendors/fontawesome/css/all.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('public/vendors/themify-icons/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{ asset('public/vendors/nice-select/nice-select.css')}}">
+  <link rel="stylesheet" href="{{ asset('public/vendors/owl-carousel/owl.theme.default.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('public/vendors/owl-carousel/owl.carousel.min.css')}}">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{ asset('public/css/style.css')}}">
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -21,7 +21,7 @@
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="/"><img src="img/logo.png" alt=""></a>
+          <a class="navbar-brand logo_h" href="/"><img src="{{ asset('public/img/logo.png')}}" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -35,8 +35,8 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Comprar</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="#">Categorias</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Carrito</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/categories">Categorias</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/">Carrito</a></li>
                 </ul>
               </li>
               <li class="nav-item submenu dropdown">
@@ -51,12 +51,12 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Mi cuenta</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">Register</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+              <li class="nav-item"><a class="nav-link" href="/contact">Contacto</a></li>
             </ul>
 
             <ul class="nav-shop">
@@ -75,7 +75,7 @@
   <!--================ End Header Menu Area =================-->
 
 
-  @yield('secitonPage')
+  @yield('sectionPage')
 
   
   <!-- ================ Subscribe section start ================= --> 
@@ -85,7 +85,8 @@
           <h3 class="subscribe__title">Tienes Dudas?</h3>
           <p>Envianos un correo </p>
           <div id="mc_embed_signup">
-            <form target="_blank" action="" method="get" class="subscribe-form form-inline mt-5 pt-1">
+            {{ Form::open(['route'=>'checkLogin','class'=>"subscribe-form form-inline mt-5 pt-1"]) }}
+            {{ Form::token() }}
               <div class="form-group ml-sm-auto">
                 <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Escribe tu correo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Escribe tu correo '" >
                 <div class="info"></div>
@@ -95,7 +96,7 @@
                 <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
               </div>
 
-            </form>
+            {{ Form::close() }}
           </div>
           
         </div>
@@ -136,12 +137,12 @@
             <div class="single-footer-widget instafeed">
               <h4 class="footer_title">Gallery</h4>
               <ul class="list instafeed d-flex flex-wrap">
-                <li><img src="img/gallery/r1.jpg" alt=""></li>
-                <li><img src="img/gallery/r2.jpg" alt=""></li>
-                <li><img src="img/gallery/r3.jpg" alt=""></li>
-                <li><img src="img/gallery/r5.jpg" alt=""></li>
-                <li><img src="img/gallery/r7.jpg" alt=""></li>
-                <li><img src="img/gallery/r8.jpg" alt=""></li>
+                <li><img src="{{ asset('public/img/gallery/r1.jpg')}}" alt=""></li>
+                <li><img src="{{ asset('public/img/gallery/r2.jpg')}}" alt=""></li>
+                <li><img src="{{ asset('public/img/gallery/r3.jpg')}}" alt=""></li>
+                <li><img src="{{ asset('public/img/gallery/r5.jpg')}}" alt=""></li>
+                <li><img src="{{ asset('public/img/gallery/r7.jpg')}}" alt=""></li>
+                <li><img src="{{ asset('public/img/gallery/r8.jpg')}}" alt=""></li>
               </ul>
             </div>
           </div>
@@ -150,7 +151,7 @@
               <h4 class="footer_title">Contacto</h4>
               <div class="ml-40">
                 <p class="sm-head">
-                  <a href="#" style="color: #FFFFFF">
+                  <a href="/contact" style="color: #FFFFFF">
                   <span class="fa fa-location-arrow"></span>
                   Oficinas
                   </a>
@@ -196,13 +197,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-  <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-  <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="vendors/skrollr.min.js"></script>
-  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-  <script src="vendors/jquery.ajaxchimp.min.js"></script>
-  <script src="vendors/mail-script.js"></script>
-  <script src="js/main.js"></script>
+  <script src="{{ asset('public/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ asset('public/vendors/bootstrap/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ asset('public/vendors/skrollr.min.js')}}"></script>
+  <script src="{{ asset('public/vendors/owl-carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{ asset('public/vendors/nice-select/jquery.nice-select.min.js')}}"></script>
+  <script src="{{ asset('public/vendors/jquery.ajaxchimp.min.js')}}"></script>
+  <script src="{{ asset('public/vendors/mail-script.js')}}"></script>
+  <script src="{{ asset('public/js/main.js')}}"></script>
 </body>
 </html>

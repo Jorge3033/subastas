@@ -27,7 +27,7 @@
 @section('records')
 	@foreach ($report as $r)
 		<tr>
-			<td><img src="{{ asset('photos/adminsPhotos/'.$r->photo) }}" width="50" height="50"></td>
+			<td><img src="{{ asset('public/photos/adminsPhotos/'.$r->photo) }}" width="50" height="50"></td>
 			<td>{{ $r->name }}</td>
 			<td>{{ $r->lastName }}</td>
 			<td>{{ $r->email }}</td>
@@ -62,7 +62,7 @@
               <div class="modal-content">   
                 <!-- Modal Header -->
                   <div class="modal-header">
-                    <h4 class="modal-title"><img src="{{ asset('photos/adminsPhotos/'.$r->photo) }}" width="50" height="50"> {{ $r->name }}</h4>
+                    <h4 class="modal-title"><img src="{{ asset('public/photos/adminsPhotos/'.$r->photo) }}" width="50" height="50"> {{ $r->name }}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                  <!-- Modal body -->
@@ -70,7 +70,6 @@
                     <label for="">Id: {{ $r->id }}</label><br>
                     <label for="">Nombre: {{ $r->name }}</label><br>
                     <label for="">Apellido: {{ $r->lastName }}</label><br>
-                    <label for="">sexo: {{ $r->sex }}</label><br>
                     <label for="">Correo: {{ $r->email }}</label><br>
                     <label for="">Telefono: {{ $r->phone }}</label><br>
                     <label for="">Contraseña: {{ $r->password }}</label><br>

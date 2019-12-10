@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\article;
 use App\subCategory;
 use App\User;
+use Session;
 class ArticleController extends Controller
 {
     public function generateReport(){
@@ -40,7 +41,11 @@ class ArticleController extends Controller
 	}
 
 	public function report(){
-		 
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{ 
 		$report=$this->generateReport();
 		
 		$nextId=$this->lastId();
@@ -49,10 +54,16 @@ class ArticleController extends Controller
 			   ->with('report',$report) 
 			   ->with('nextId',$nextId); 
 		//return $report;
+		}
 	}
   
 	
 	public function formUpArticle(){
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$categories=$this->showCategories();
 
 		$sellers=$this->showSellers();
@@ -62,7 +73,7 @@ class ArticleController extends Controller
 					->with('nextId',$nextId)
 					->with('sellers',$sellers)
 					->with('categories',$categories);
-
+		}
 	}
 
 
@@ -116,7 +127,11 @@ class ArticleController extends Controller
 	}
 
 	public function modificarArticle($ArticleId){
-		
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $consulta =article::where('id','=',$ArticleId)->get();
 		 $categories=$this->showCategories();
 		 $sellers=$this->showSellers();
@@ -126,6 +141,7 @@ class ArticleController extends Controller
 		 			->with('consulta',$consulta[0])
 		 			->with('sellers',$sellers)
 		 			->with('categories',$categories);
+		 }			
 
 	}  
 
@@ -194,17 +210,28 @@ class ArticleController extends Controller
 	  
 
 	public function lock($ArticleId){
-		
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		 $article= article::find($ArticleId);
 		 $article->status="inactivo";
 		 $article->save();
 		 return redirect('/reportArticles');
+		}
 	}
 
 	public function unlock($ArticleId){
+		$s=Session::get('sessionName');
+		if ($s == '') {
+			Session::flash('error', 'Ruta Bloqueada Nesesitas Iniciar Sesion');
+        	return redirect('/login');
+		}else{
 		$article= article::find($ArticleId);
 		 $article->status="activo";
 		 $article->save();
 		 return redirect('/reportArticles');
+		}
 	}
 }
