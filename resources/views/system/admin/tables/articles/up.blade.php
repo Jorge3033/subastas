@@ -43,8 +43,8 @@
                     </div>
                     
                     <div class="form-group">
-                        @if($errors->first('fechaInicia'))
-                          {{ $errors->first('fechaInicia'),"<br>"}}
+                        @if($errors->first('fechaInicial'))
+                          {{ $errors->first('fechaInicial'),"<br>"}}
                         @endif
                         {{ Form::label('fecha', 'Fecha inicial de Publicacion',[ 'class'=>'btn'] ) }}
                         <input type="date" class="form-control" name="fechaInicial">

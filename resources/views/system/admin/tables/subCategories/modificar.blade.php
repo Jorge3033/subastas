@@ -7,7 +7,7 @@
 @section('form')
 
 
-                    <h4 class="modal-title"><img src="{{ asset('public/photos/folder.jfif') }}" width="50" height="50"> Alta Subcategoria</h4>
+                    <h4 class="modal-title"><img src="{{ asset('public/photos/folder.jfif') }}" width="50" height="50"> Modificar Subcategoria</h4>
                   
                   <div class="modal-body">
                     {{ Form::open(['route'=>'modificarSubCategories']) }}
@@ -51,7 +51,7 @@
                   </div>
                     
                     <a href="/reportSubCategories" class="btn btn-danger" data-dismiss="modal">Cancelar</a> 
-                    {{ Form::submit('Guardar', ['class'=>'btn btn-success']) }}            
+                    {{ Form::submit('Modificar', ['class'=>'btn btn-warning']) }}            
                     {{ Form::close() }}
 @stop
 

@@ -37,6 +37,7 @@
       <div class="sidebar-heading">
         Actividades
       </div>
+      <!--
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
           aria-expanded="true" aria-controls="collapseBootstrap">
@@ -49,11 +50,13 @@
             <a class="collapse-item" href="#">Usuarios</a>
             <a class="collapse-item" href="#">Administradores</a>
             <a class="collapse-item" href="#">Ventas</a>
+
           </div>
         </div>
       </li>
+      -->
       <li class="nav-item">
-        <a class="nav-link" href="forms.html">
+        <a class="nav-link" href="/adminTemplate">
           <i class="fab fa-fw fa-wpforms"></i>
           <span>Sistema</span> 
         </a>
@@ -76,22 +79,27 @@
           </div>
         </div>
       </li>
+      <!--
       <li class="nav-item">
-        <a class="nav-link" href="ui-colors.html">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-palette"></i>
-          <span>home</span>
+          <span>ome</span>
         </a>
-      </li>
+      </li>-->
+
       <hr class="sidebar-divider">
+      <!--
       <div class="sidebar-heading">
         Inventario
-      </div>
+      </div>-->
       <li class="nav-item">
+        <!--
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
           aria-controls="collapsePage">
           <i class="fas fa-fw fa-columns"></i>
           <span>Ventas</span>
-        </a>
+        </a>-->
+        <!--
         <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Ventas</h6>
@@ -99,10 +107,10 @@
             <a class="collapse-item" href="login.html">Realizadas</a>
             <a class="collapse-item" href="login.html">Canceladas</a>
           </div>
-        </div>
+        </div>-->
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Graficas</span>
         </a>
@@ -314,8 +322,8 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>copyright &copy; 2019 - developed by
-              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">GMR Company</a></b>
+            <span>copyright &copy; 2019 - Desarrollado por
+              <b><a href="#" >GMR Company</a></b>
             </span>
           </div>
         </div>

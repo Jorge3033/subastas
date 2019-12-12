@@ -55,7 +55,7 @@ class CategoryController extends Controller
 		
 		$this->validate($request,[
             'nombre'=>['regex:/^[a-z,A-Z, ]*$/'],
-            'nombre'=>'required'
+            'descripcion'=>'required'
         ]);
 
 		

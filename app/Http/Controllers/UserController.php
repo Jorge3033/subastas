@@ -57,7 +57,7 @@ class UserController extends Controller
     	 	'contrasena'=>'required',
             'nombre'=>['regex:/^[a-z,A-Z, ]*$/'],
             'telefono'=>['regex:/^[0-9]{10}$/'],
-            'apellido'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
+            'apellidos'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
             'correo'=>['regex:/^[a-z,A-Z,0-9]*@[a-z,A-Z]*.[a-z,A-Z]*$/'],
             'photo'=>'mimes:jpeg,png,gif,jpg',
         ]);
@@ -125,7 +125,7 @@ class UserController extends Controller
     	 	'contrasena'=>'required',
             'nombre'=>['regex:/^[a-z,A-Z, ]*$/'],
             'telefono'=>['regex:/^[0-9]{10}$/'],
-            'apellido'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
+            'apellidos'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
             'correo'=>['regex:/^[a-z,A-Z,0-9]*@[a-z,A-Z]*.[a-z,A-Z]*$/'],
             'photo'=>'mimes:jpeg,png,gif,jpg',
         ]);

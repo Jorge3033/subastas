@@ -106,7 +106,7 @@
                     
                     
                     <a href="/reportArticles" class="btn btn-danger" data-dismiss="modal">Cancelar</a> 
-                    {{ Form::submit('Guardar', ['class'=>'btn btn-success']) }}            
+                    {{ Form::submit('Modificar', ['class'=>'btn btn-warning']) }}            
                     {{ Form::close() }}
 @stop
 

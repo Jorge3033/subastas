@@ -56,7 +56,7 @@ class AdminController extends Controller
 		$this->validate($request,[
     	 	'contrasena'=>'required',
             'nombre'=>['regex:/^[a-z,A-Z, ]*$/'],
-            'apellido'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
+            'apellidos'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
             'correo'=>['regex:/^[a-z,A-Z,0-9]*@[a-z,A-Z]*.[a-z,A-Z]*$/'],
             'photo'=>'mimes:jpeg,png,gif,jpg',
         ]);
@@ -119,7 +119,7 @@ class AdminController extends Controller
 		$this->validate($request,[
     	 	'contrasena'=>'required',
             'nombre'=>['regex:/^[a-z,A-Z, ]*$/'],
-            'apellido'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
+            'apellidos'=>['regex:/^[A-Z,a-z][A-Z,a-z, ]*$/'],
             'correo'=>['regex:/^[a-z,A-Z,0-9]*@[a-z,A-Z]*.[a-z,A-Z]*$/'],
             'photo'=>'mimes:jpeg,png,gif,jpg',
         ]);
