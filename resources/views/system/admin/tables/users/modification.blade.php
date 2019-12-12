@@ -65,8 +65,11 @@
                     <div class="form-group">
                       <label for="">Sexo</label>
                       <select name="sexo" id="" class="form-control">
-                        <option value="H">Hombre</option>
-                        <option value="M">Mujer</option>
+                        @if ($info->sex=='H')
+                          <option value="H" selected>Hombre</option>
+                        @else
+                          <option value="M" selected>Mujer</option>  
+                        @endif
                       </select>
                     </div>
 
