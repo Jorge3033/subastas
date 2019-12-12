@@ -32,11 +32,14 @@ Route::get('/adminTemplate', 'AdminTemplateController@index')->name('adminTempla
 
 //				Sessions Routes 
 ###################################################################
-
+//sessins routes Admins
 Route::get('/login', 'SessionsController@login')->name('login');	
 Route::POST('/checkLogin', 'SessionsController@checkLogin')->name('checkLogin');
 Route::get('/logOutAdmin', 'SessionsController@logOutAdmin')->name('logOutAdmin');	
-
+//end sessions routes admins
+//session Users
+Route::get('/logOutUser', 'SessionsController@logOutUser')->name('logOutUser');	
+//end Session Users
 
 ###################################################################
 // 				end Session Routes

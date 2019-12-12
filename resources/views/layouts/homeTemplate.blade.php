@@ -53,7 +53,9 @@
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">Register</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+                   @if (Session::has('sessionNameUser'))
+                      <li class="nav-item"><a class="nav-link" href="/logOutUser">Cerrar sesion</a></li>
+                   @endif
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="/contact">Contacto</a></li>
@@ -65,7 +67,14 @@
                   <button type="submit" ><i class="ti-search"></i></button>
               </li>
               <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+              @if (Session::has('sessionNameUser'))
+
+                {{ Session::get('sessionNameUser') }} 
+                <img width="30px" height="30px" 
+                src="{{ asset('/public/photos/usersPhotos/'.Session::get('sessionPhotoUser')) }}" alt="">
+              @else  
+                <li class="nav-item"><a class="button button-header" href="#">invitado</a></li>
+              @endif
             </ul>
           </div>
         </div>

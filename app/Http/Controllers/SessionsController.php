@@ -38,7 +38,8 @@ class SessionsController extends Controller
     			   	      ->get();
     		if (count($consulta)>0) {
 
-    			Session::put('sessionName', $consulta[0]->name);
+                Session::put('sessionNameUser', $consulta[0]->name);
+    			Session::put('sessionPhotoUser', $consulta[0]->photo);
 				return redirect('/');
 
     		}else{
@@ -60,6 +61,16 @@ class SessionsController extends Controller
 
 
   	}
+
+    public function logOutUser(){
+        
+        Session::forget('sessionNameUser');
+        Session::forget('sessionPhotoUser');
+        Session::flash('error', 'Sesion Cerrada Correctamente');
+        return redirect('/login');
+
+
+    }
     
 
 }
